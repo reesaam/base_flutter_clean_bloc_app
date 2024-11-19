@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      build_web_compilers:ddc_modules:
+        options:
+          strategy: fine
+      build_web_compilers:dart2js_modules:
+        options:
+          strategy: fine

@@ -1,0 +1,157 @@
+name: base_flutter_clean_bloc_app
+description: Base Flutter App Based on Clean Architecture and BloC (Cubit) State Manager
+homepage: https://resam.site
+repository: https://github.com/reesaam/base_flutter_clean_bloc_app
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  #State Manager
+  #bloc: ^8.1.4
+  #flutter_bloc: ^8.1.5
+
+  #Dependency Injection
+  get_it: ^7.6.7
+
+  #Code Generator
+  freezed: ^2.5.7
+
+  #Tools
+  dartz: ^0.10.1
+  dart_eval: ^0.6.0
+  json_annotation: ^4.9.0
+
+  #DataBase
+  #mongo_dart: ^0.9.4
+  #realm: ^2.1.0
+  #flutter_mongodb_realm: ^2.3.0
+
+  #Storage
+  shared_preferences: ^2.3.3
+  get_storage: ^2.1.1
+
+  #Device Related and Resources
+  permission_handler: ^10.4.5
+  #permission_handler_web: ^0.0.2
+  mobile_number: ^2.1.1
+  flutter_contacts: ^1.1.7+1
+  camera: ^0.10.5+9
+
+  #Remote and Connection
+  dio: ^5.4.2+1
+  html: ^0.15.4
+  #http: ^1.2.1
+  #curl_logger_dio_interceptor: ^1.0.0
+  connectivity_plus: ^5.0.0
+  internet_connection_checker_plus: ^2.2.0
+  url_launcher: ^6.2.5
+  url_strategy: ^0.2.0
+  http_interceptor_plus: ^0.0.1
+  retrofit: ^4.1.0
+  #retrofit_flutter: ^1.1.1
+  chopper: ^7.4.0
+
+  #Notifications
+  awesome_notifications: ^0.8.2
+  #awesome_notifications_core: ^0.8.2
+  #awesome_notifications_fcm: ^0.8.2
+
+  #File
+  open_file_plus: ^3.4.1+1
+  flutter_file_dialog: ^3.0.2
+  path_provider: ^2.1.2
+
+  #MultiMedia
+  #just_audio: ^0.9.38
+  #assets_audio_player: ^3.1.1
+  #beep_player: ^0.0.1
+
+  #UI
+  flutter_animate: ^4.5.0
+
+  #Text and Text-Field
+  auto_size_text: ^3.0.0
+  mask_text_input_formatter: ^2.9.0
+  flutter_regex: ^0.0.3
+
+  #Widget
+  loading_animation_widget: ^1.2.1
+
+  #Localization
+  intl: ^0.19.0
+  timezone: ^0.9.4
+  country_flags: ^3.0.0
+  persian_datetime_picker: ^2.6.0
+
+  #Docs
+  dartdoc: ^8.1.0
+
+  #Sharing
+  share_plus: ^7.2.2
+
+  #Lints
+  lint: ^2.3.0
+  lints: ^3.0.0
+
+  #Other
+  dart_style: ^2.3.2
+  rename: ^3.0.2
+  change_app_package_name: ^1.1.0
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  #Code Generator
+  build_runner: ^2.4.13
+  json_serializable: ^6.7.1
+  freezed_annotation: ^2.4.1
+  injectable_generator: ^2.2.0
+  #realm_generator: ^2.2.1
+  retrofit_generator: ^8.1.0
+  chopper_generator: ^7.4.0
+
+  #Test
+  build_test: ^2.2.2
+  build_web_compilers: ^4.0.10
+  responsive_framework: ^1.4.0
+
+  #Icon
+  flutter_launcher_icons: ^0.13.1
+
+  #Lints
+  flutter_lints: ^3.0.2
+
+flutter_intl:
+  enabled: true
+
+flutter:
+  generate: true
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/logos/
+    - assets/fonts/
+
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu/Ubuntu-Medium.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Medium.ttf
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-SemiBold.ttf
