@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
+
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../ui_kit/text_fields/text_field.dart';
@@ -10,7 +10,7 @@ import '../../../ui_kit/resources/paddings.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_verifiers_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminVerifiersPage extends CoreView<AdminVerifiersController> {
   const AdminVerifiersPage({super.key});
 

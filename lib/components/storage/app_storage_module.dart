@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
+
 
 import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';

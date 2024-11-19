@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_info/app_info.dart';
@@ -12,7 +12,7 @@ import '../../../ui_kit/theme/themes.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_app_resources_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminAppResourcesPage extends CoreView<AdminAppResourcesController> {
   const AdminAppResourcesPage({super.key});
 

@@ -1,4 +1,4 @@
-import 'package:getx_binding_annotation/annotation.dart';
+
 import 'package:dio/dio.dart' as dio;
 
 import 'general_exception.dart';

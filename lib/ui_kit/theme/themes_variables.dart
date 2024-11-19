@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 import '../../../core/core_resources/fonts.dart';
 import '../../core/core_resources/defaults.dart';

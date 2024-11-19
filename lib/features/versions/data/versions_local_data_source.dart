@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../components/failures/local_exception.dart';
 import '../../../components/storage/app_storage_module.dart';

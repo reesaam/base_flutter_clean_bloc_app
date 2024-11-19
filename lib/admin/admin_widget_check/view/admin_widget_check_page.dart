@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../core/core_elements/core_view.dart';
 import '../../../core/core_resources/page_details.dart';
@@ -29,7 +29,7 @@ import '../../../ui_kit/resources/paddings.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_widget_check_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminWidgetCheckPage extends CoreView<AdminWidgetCheckController> {
   const AdminWidgetCheckPage({super.key});
 

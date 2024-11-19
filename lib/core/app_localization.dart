@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
 import 'package:timezone/timezone.dart';
 
+import '../components/dependency_injection/di_core.dart';
 import '../shared/shared_models/core_models/app_settings_data/app_setting_data.dart';
+import 'annotations/dependency_injection_annotation.dart';
 import 'core_functions.dart';
 import 'core_info/core_defaults.dart';
 import 'core_resources/countries.dart';
@@ -15,13 +15,14 @@ import 'extensions/extensions_on_data_types/extension_list.dart';
 import 'extensions/extensions_on_data_types/extension_time_zone.dart';
 
 class Texts {
-  Texts._();
-  static S get to => S.of(Get.context!);
+  BuildContext context;
+  Texts(this.context);
+  S get to => S.of(context);
 }
 
-@GetPut.component()
+@DI.component
 class AppLocalization {
-  static AppLocalization get to => Get.find();
+  static AppLocalization get to => const DiCore<AppLocalization>().get();
 
   get supportedLocales => S.delegate.supportedLocales;
 

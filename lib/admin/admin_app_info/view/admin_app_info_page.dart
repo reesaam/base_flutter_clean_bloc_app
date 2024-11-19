@@ -18,7 +18,7 @@ import '../../../ui_kit/resources/paddings.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_app_info_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminAppInfoPage extends CoreView<AdminAppInfoController> {
   const AdminAppInfoPage({super.key});
 

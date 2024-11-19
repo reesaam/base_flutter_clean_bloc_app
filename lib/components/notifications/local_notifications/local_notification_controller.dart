@@ -2,12 +2,12 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../../core/core_functions.dart';
 import '../notifications_enums.dart';
 
-@GetPut.controller()
+@DI.controller()
 class AppLocalNotificationController {
   AppLocalNotificationController() {
     ReceivePort? receivePort;

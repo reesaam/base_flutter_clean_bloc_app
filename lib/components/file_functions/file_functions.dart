@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter_file_dialog/flutter_file_dialog.dart';
-import 'package:get/get.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
+
 
 import '../../../core/core_functions.dart';
 

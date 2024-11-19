@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 import '../../core_resources/core_enums.dart';
 import '../../core_resources/texts.dart';

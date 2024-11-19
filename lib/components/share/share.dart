@@ -1,4 +1,4 @@
-import 'package:getx_binding_annotation/annotation.dart';
+
 import 'package:share_plus/share_plus.dart';
 
 @GetPut.component()

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 import '../components/storage/app_storage_module.dart';
 import '../shared/shared_models/core_models/app_data/app_data.dart';
@@ -30,43 +30,44 @@ void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] 
 void appLogPrint(message) => debugPrint('[LOG] $message');
 
 void popPage() {
-  Get.back();
+  goBack();
 }
 
 nullFunction() => null;
 
-bool? clearAppData() {
+bool? clearAppData(BuildContext context) {
   bool result = false;
-  AppStorage.to.clearStorage().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
+  AppStorage.to.clearStorage().then((value) => value.fold((l) => AppExceptionsDialog.local(context, exception: l), (r) => result = r));
   return result;
 }
 
-bool? saveAppData({
+bool? saveAppData(
+  BuildContext context, {
   AppVersionsList? appVersionData,
   AppDataVersions? appDataVersionData,
   AppSettingData? appSettingData,
   AppStatisticsData? appStatisticsData,
 }) {
   bool result = false;
-  AppData? loadedData = loadAppData();
+  AppData? loadedData = loadAppData(context);
   AppData appData = AppData(
     appVersions: appVersionData ?? loadedData?.appVersions,
     dataVersion: appDataVersionData ?? loadedData?.dataVersion,
     settings: appSettingData ?? loadedData?.settings,
     statisticsData: appStatisticsData ?? loadedData?.statisticsData,
   );
-  AppStorage.to.saveAppData(appData: appData).then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
+  AppStorage.to.saveAppData(appData: appData).then((value) => value.fold((l) => AppExceptionsDialog.local(context, exception: l), (r) => result = r));
   return result;
 }
 
-AppData? loadAppData() {
+AppData? loadAppData(BuildContext context) {
   AppData? appData;
-  AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => appData = r));
+  AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.local(context, exception: l), (r) => appData = r));
   return appData;
 }
 
-void printAllData({bool? detailsIncluded}) async {
-  AppData? appData = loadAppData();
+void printAllData(BuildContext context, {bool? detailsIncluded}) async {
+  AppData? appData = loadAppData(context);
   AppStorage.to.printData(appData: appData, detailsIncluded: detailsIncluded);
 }
 
@@ -91,16 +92,24 @@ Future<void> checkForceUpdate() async {
   }
 }
 
-noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connectionInternetNotAvailableText);
+noInternetConnectionSnackBar(BuildContext context) => AppSnackBar.show(message: Texts(context).to.connectionInternetNotAvailableText);
 
-showLoadingDialog({bool? isDismissible}) => AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+showLoadingDialog(BuildContext context, {bool? isDismissible}) =>
+    AppAlertWidgetDialogs().withoutButton(context, widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() => AppAlertDialogs.withOkCancel(title: Texts.to.appExit, text: Texts.to.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog(BuildContext context) => AppAlertDialogs.withOkCancel(
+      context,
+      title: Texts(context).to.appExit,
+      text: Texts(context).to.areYouSure,
+      onTapOk: appExit,
+      dismissible: true,
+    );
 
-appRestart({AppPageDetail? bootPage}) async {
-  showLoadingDialog();
+appRestart(BuildContext context, {AppPageDetail? bootPage}) async {
+  showLoadingDialog(context);
   appLogPrint('App Reset Triggered');
-  Get.reloadAll();
+  ///TODO: App Restart Implementation
+  // Get.reloadAll();
 }
 
 appReset() {}

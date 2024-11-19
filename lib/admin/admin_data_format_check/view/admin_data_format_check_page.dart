@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../core/app_localization.dart';
 import '../../../core/core_elements/core_view.dart';
@@ -13,7 +13,7 @@ import '../../../ui_kit/resources/paddings.dart';
 import '../../admin_general_functions.dart';
 import '../controller/admin_data_format_check_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminDataFormatCheckPage extends CoreView<AdminDataFormatCheckController> {
   const AdminDataFormatCheckPage({super.key});
 

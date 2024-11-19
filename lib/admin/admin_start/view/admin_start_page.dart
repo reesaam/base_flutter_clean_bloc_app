@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:getx_binding_annotation/annotation.dart';
+
 
 import '../../../core/app_localization.dart';
 import '../../../core/app_routing/app_routing.dart';
@@ -13,7 +13,7 @@ import '../../../ui_kit/main_widgets/floating_buttons.dart';
 import '../../../ui_kit/resources/paddings.dart';
 import '../controller/admin_start_controller.dart';
 
-@GetPut.page()
+@AppRouter()
 class AdminStartPage extends CoreView<AdminStartController> {
   const AdminStartPage({super.key});
 
