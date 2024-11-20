@@ -1,9 +1,9 @@
 {
-    "@@locale": "en",
-    "languageName": "English",
+    "@@locale": "de",
+    "languageName": "Deutsch",
     "app_name": "Base Flutter MVC GetX App",
 
-    "splashScreenPageName": "Splash Screen",
+   "splashScreenPageName": "Splash Screen",
     "homePageName": "Home",
     "settingsPageName": "Settings",
     "updatePageName": "Update",
@@ -46,7 +46,6 @@
     "areYouSureDataImport": "Are you sure?\nData will be imported and exposed.",
 
     "appExit": "App Exit",
-
 
     "connectionInternetNotAvailableTitle": "Internet Connection",
     "connectionInternetNotAvailableText": "Internet Connection is not Available!\nPlease Check your Connection.",

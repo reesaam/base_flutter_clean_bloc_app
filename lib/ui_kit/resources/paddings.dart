@@ -8,5 +8,6 @@ class AppPaddings extends EdgeInsets {
   const AppPaddings.symmetric({double? horizontal, double? vertical}) : super.symmetric(horizontal: horizontal ?? 0, vertical: vertical ?? 0);
 
   ///General
+  static EdgeInsets get zero => const EdgeInsets.all(0);
   static EdgeInsets get pages => const EdgeInsets.all(10);
 }

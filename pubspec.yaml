@@ -36,6 +36,7 @@ dependencies:
   dartz: ^0.10.1
   dart_eval: ^0.6.0
   json_annotation: ^4.9.0
+  dart_mem_annotation: ^0.0.3
 
   #DataBase
   #mongo_dart: ^0.9.4
@@ -123,7 +124,9 @@ dev_dependencies:
   #Code Generator
   build_runner: ^2.4.13
   freezed_annotation: ^2.4.1
+  json_serializable: ^6.9.0
   injectable_generator: ^2.2.0
+  dart_mem_annotation_generator: ^0.0.3
   #realm_generator: ^2.2.1
   retrofit_generator: ^8.1.0
   chopper_generator: ^7.4.0
