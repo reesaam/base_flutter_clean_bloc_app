@@ -10,6 +10,9 @@ import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
 import '../../core/core_resources/core_enums.dart';
 import '../../core/core_resources/texts.dart';
+import '../../extensions/data_types/date_time_extensions.dart';
+import '../../extensions/data_types/duration_extensions.dart';
+import '../../extensions/data_types/string_extensions.dart';
 import '../../shared/shared_mems/core_mems/app_data/app_data.dart';
 import '../di/di_setup.dart';
 import '../failures/local_exception.dart';
@@ -78,8 +81,8 @@ class AppStorage {
     }
   }
 
-  void printData(BuildContext context, {AppDataModel? appData, bool? detailsIncluded}) {
-    String unknown = Texts(context).to.notAvailableInitials;
+  void printData({AppDataModel? appData, bool? detailsIncluded}) {
+    String unknown = Texts.to.notAvailableInitials;
 
     if (appData != null) {
       appLogPrint('==> App Data:');
@@ -100,8 +103,8 @@ class AppStorage {
       appLogPrint('Statistics / Crashes: ${appData?.statisticsDataModel?.crashes}');
       appLogPrint('Statistics / Page Opens: ${appData?.statisticsDataModel?.pageOpens}');
       appLogPrint('Statistics / API Calls: ${appData?.statisticsDataModel?.apiCalls}');
-      appLogPrint('Statistics / Install DateTime: ${appData?.statisticsDataModel?.installDateTime.toDateTimeFormat}');
-      appLogPrint('Statistics / Install Duration: ${appData?.statisticsDataModel?.installDuration.toConditionalFormat}');
+      appLogPrint('Statistics / Install DateTime: ${appData?.statisticsDataModel?.installDateTime?.toDateTimeFormat}');
+      appLogPrint('Statistics / Install Duration: ${appData?.statisticsDataModel?.installDuration?.toConditionalFormat}');
     }
   }
 }

@@ -4,6 +4,9 @@ import 'package:flutter_regex/flutter_regex.dart';
 
 import '../../../core/core_functions.dart';
 import '../../core/app_localization.dart';
+import '../../extensions/data_types/icon_extensions.dart';
+import '../../extensions/regex/regex_extensions.dart';
+import '../../shared/verifier_mems/regex/regex.dart';
 import '../resources/elements.dart';
 import '../resources/paddings.dart';
 import '../resources/text_styles.dart';
@@ -72,7 +75,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   final Function()? suffixAction;
   final Function()? wholeWidgetAction;
   final Function(String)? onChangedAction;
-  final AppRegexModel? regexValidator;
+  final AppRegexEntity? regexValidator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? editable; // Default is false
   final bool? hasCounter; // Default is false
@@ -111,8 +114,8 @@ abstract class AppTextFieldWidget extends StatelessWidget {
           maxLines: expandable == true
               ? null
               : isPassword == true
-              ? 1
-              : maxLines,
+                  ? 1
+                  : maxLines,
           maxLength: maxLength,
           expands: expandable == true,
           enableInteractiveSelection: editable == false || wholeWidgetAction != null ? false : true,
@@ -124,10 +127,10 @@ abstract class AppTextFieldWidget extends StatelessWidget {
           onChanged: (value) => onChangedAction == null ? () {} : onChangedAction!(value),
           onTapOutside: (event) => FocusScope.of(context).previousFocus(),
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) => _errorDetector(),
+          validator: (value) => _errorDetector(context),
           inputFormatters: inputFormatters ?? _formatters(),
           buildCounter: (context, {required currentLength, required isFocused, required maxLength}) =>
-          hasCounter == true || showMaxLength == true ? _buildCounter(currentLength) : null,
+              hasCounter == true || showMaxLength == true ? _buildCounter(context, currentLength: currentLength) : null,
 
           /// All Decoration Customizations
           decoration: InputDecoration(
@@ -143,18 +146,14 @@ abstract class AppTextFieldWidget extends StatelessWidget {
             prefixIcon: _prefix,
             suffixIcon: _suffix,
             border: AppElements.borderOutlined,
-            enabledBorder: _errorDetector() == null
-                ? AppElements.borderOutlined
-                : AppElements.borderOutlinedError,
+            enabledBorder: _errorDetector(context) == null ? AppElements.borderOutlined : AppElements.borderOutlinedError,
             disabledBorder: AppElements.borderOutlinedDisabled,
             focusedBorder: AppElements.borderOutlinedFocused,
             isDense: true,
             isCollapsed: true,
-            errorStyle: _errorDetector() == null ? null : AppTextStyles.textError(),
-            errorBorder: _errorDetector() == null
-                ? null
-                : AppElements.borderOutlinedError,
-            errorText: _errorDetector(),
+            errorStyle: _errorDetector(context) == null ? null : AppTextStyles.textError(),
+            errorBorder: _errorDetector(context) == null ? null : AppElements.borderOutlinedError,
+            errorText: _errorDetector(context),
           )),
     );
   }
@@ -162,31 +161,31 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   Widget? get _leading => leadingIcon == null
       ? null
       : InkWell(
-    onTap: () => leadingAction == null ? nullFunction() : leadingAction!(),
-    child: leadingIcon?.withSecondaryColor,
-  );
+          onTap: () => leadingAction == null ? nullFunction() : leadingAction!(),
+          child: leadingIcon?.withSecondaryColor,
+        );
 
   Widget? get _prefix => prefixIcon == null
       ? null
       : InkWell(
-    onTap: () => prefixAction == null ? nullFunction() : prefixAction!(),
-    child: prefixIcon?.withSecondaryColor,
-  );
+          onTap: () => prefixAction == null ? nullFunction() : prefixAction!(),
+          child: prefixIcon?.withSecondaryColor,
+        );
 
   Widget? get _suffix => suffixIcon == null
       ? null
       : InkWell(
-    onTap: () => suffixAction == null ? nullFunction() : suffixAction!(),
-    child: suffixIcon?.withSecondaryColor,
-  );
+          onTap: () => suffixAction == null ? nullFunction() : suffixAction!(),
+          child: suffixIcon?.withSecondaryColor,
+        );
 
   /// All Errors would Detect by this function
   /// Even multiple conditions will Check and shows by their priority
-  String? _errorDetector() {
+  String? _errorDetector(BuildContext context) {
     String? text;
 
     //Regex Check
-    if (regexValidator != null) _regexValidator(controller.text) ? text = null : text = errorText ?? Texts.to.incorrect;
+    if (regexValidator != null) _regexValidator(context, value: controller.text) ? text = null : text = errorText ?? Texts.to.incorrect;
 
     //In case of conditions to check and show error are absent ErrorText will come from above
     if (regexValidator == null) text == errorText;
@@ -196,7 +195,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
 
   List<TextInputFormatter>? _formatters() {
     List<TextInputFormatter>? formatters = List<TextInputFormatter>.empty(growable: true);
-    if (regexValidator != null && !AppRegexModelsList.exceptionsOfFormatting().contains(regexValidator!)) {
+    if (!(regexValidator == null && const AppRegexListEntity().exceptionsOfFormatting().regexesListEntity!.contains(regexValidator))) {
       formatters.add(FilteringTextInputFormatter.allow(regexValidator!.regExp));
     }
 
@@ -204,13 +203,14 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   }
 
   /// Regex Checker
-  bool _regexValidator(String value) => value == Texts.to.empty ? true : RegexVal.hasMatch(value, regexValidator!.regexValue);
+  bool _regexValidator(BuildContext context, {String? value}) =>
+      value == Texts.to.empty ? true : RegexVal.hasMatch(value, regexValidator?.regexValue ?? '');
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions
   /// Counter with [ShowMaxLength == False] and [maxLength != null] will show Counter but without showing its limitation but it has the limitation
   /// Counter with [MaxLength == null] would just unlimited counts the Chars
-  Widget _buildCounter(int currentLength) {
+  Widget _buildCounter(BuildContext context, {int? currentLength}) {
     String text = '';
     if (hasCounter == true) {
       text = '${currentLength.toString()}${maxLength == null ? Texts.to.empty : ' / ${maxLength.toString()}'}';

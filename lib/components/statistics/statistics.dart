@@ -1,5 +1,5 @@
 import '../../core/annotations/dependency_injection_annotation.dart';
-import '../../extensions/core_functions/statistics_extension.dart';
+import '../../extensions/core/statistics_extension.dart';
 import '../../shared/shared_mems/core_mems/app_statistics_data/app_statistics_data.dart';
 import '../di/di_setup.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/app_localization.dart';
-import '../../core/extensions/extensions_on_material_widgets/extension_on_text.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../../extensions/material_widgets/extension_on_text.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
 import '../resources/paddings.dart';
 import '../theme/themes.dart';
 
@@ -16,7 +16,7 @@ class AppAppBar extends AppBar {
     this.barAction,
   }) : super();
 
-  final AppPageDetail pageDetail;
+  final AppPageDetailEntity pageDetail;
   final bool? withOutTitle;
   final Widget? barTitle;
   final Widget? barLeading;

@@ -23,8 +23,8 @@ extension ExtensionDateTimeDurationCalculation on Duration {
 }
 
 extension ExtensionDateTimeDurationCalculationNull on Duration? {
-  String toCompleteFormat(BuildContext context) => this == null ? Texts(context).to.notAvailableInitials : this!.toCompleteFormat();
-  String toConditionalFormat(BuildContext context) => this == null ? Texts(context).to.notAvailableInitials : this!.toConditionalFormat(context);
+  String toCompleteFormat(BuildContext context) => this == null ? Texts.to.notAvailableInitials : this!.toCompleteFormat();
+  String toConditionalFormat(BuildContext context) => this == null ? Texts.to.notAvailableInitials : this!.toConditionalFormat(context);
 }
 
 extension ExtensionDateTimeFormat on Duration {
@@ -43,12 +43,12 @@ extension ExtensionDateTimeFormat on Duration {
     diff.hour == 0 || diff.hour == null ? null : list.add(' ${diff.hour}H,');
     diff.minute == 0 || diff.minute == null ? null : list.add(' ${diff.minute}M,');
     diff.second == 0 || diff.second == null ? null : list.add(' ${diff.second}S,');
-    String result = Texts(context).to.empty;
+    String result = Texts.to.empty;
     for (var s in list) {
       if (s.isNotEmpty) result = result + s;
     }
-    result.isNotEmpty ? result = result.replaceRange(result.length - 1, result.length, Texts(context).to.empty) : null;
-    return result.isEmpty ? Texts(context).to.notAvailableInitials : result;
+    result.isNotEmpty ? result = result.replaceRange(result.length - 1, result.length, Texts.to.empty) : null;
+    return result.isEmpty ? Texts.to.notAvailableInitials : result;
   }
 
   String toTimeZoneFormat() {

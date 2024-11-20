@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/app_localization.dart';
-import '../../../core/app_routing/app_routing.dart';
 import '../../../core/core_functions.dart';
 import '../../core/core_info/app_info.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
 import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/logos.dart';
 import '../../core/core_resources/page_details.dart';
-import '../../core/extensions/extensions_on_data_types/extension_int.dart';
+import '../../extensions/data_types/int_extensions.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';
 import '../resources/spaces.dart';
@@ -40,12 +39,12 @@ class AppDrawer extends Drawer {
       ]));
 
   Widget body() {
-    List<AppPageDetail> drawerList = AppPageDetails.listPages.where((element) => element.drawerPresence == true).toList();
+    List<AppPageDetailEntity> drawerList = AppPageDetails.listPages.where((element) => element.drawerPresence == true).toList();
     return Column(children: List.generate(drawerList.length, (index) => _bodyItem(drawerList[index])));
   }
 
-  Widget _bodyItem(AppPageDetail page) =>
-      ListTile(title: Text(page.pageName ?? Texts.to.empty), leading: page.iconCode.toIcon(), onTap: () => {popPage(), goToPage(page)});
+  Widget _bodyItem(AppPageDetailEntity page) =>
+      ListTile(title: Text(page.pageName ?? Texts.to.empty), leading: page.iconCode?.toIcon(), onTap: () => {popPage(), goToPage(page)});
 
   Widget footer() => Container(
       padding: AppPaddings.drawerFooter,

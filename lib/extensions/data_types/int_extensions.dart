@@ -14,5 +14,5 @@ extension ExtensionCurrencyFormat on int {
 }
 
 extension ExtensionCurrencyFormatNull on int? {
-  String toCurrency(BuildContext context, {String? sign}) => this == null ? Texts(context).to.notAvailableInitials : this!.toCurrency();
+  String toCurrency(BuildContext context, {String? sign}) => this == null ? Texts.to.notAvailableInitials : this!.toCurrency();
 }

@@ -7,10 +7,8 @@ import '../app_localization.dart';
 import 'icons.dart';
 
 class AppPageDetails {
-  final BuildContext context;
-  AppPageDetails(this.context);
 
-  List<AppPageDetailEntity> get listPages => [
+  static List<AppPageDetailEntity> get listPages => [
         // splashScreen,
         homepage,
         // settings,
@@ -78,43 +76,43 @@ class AppPageDetails {
   // );
 
   ///Main Pages
-  // AppPageDetailEntity get splashScreen => AppPageDetailEntity(
-  //   pageName: Texts(context).to.splashScreenPageName,
+  // static AppPageDetailEntity get splashScreen => AppPageDetailEntity(
+  //   pageName: Texts.to.splashScreenPageName,
   //   pageRoute: _getPageRoute(SplashScreenPage),
   // );
 
-  AppPageDetailEntity get homepage => AppPageDetailEntity(
-    pageName: Texts(context).to.homePageName,
+  static AppPageDetailEntity get homepage => AppPageDetailEntity(
+    pageName: Texts.to.homePageName,
     pageRoute: _getPageRoute(HomePage),
     iconCode: AppIcons.home.icon!.codePoint,
     bottomBarItemNumber: 0,
     drawerPresence: true,
   );
 
-  // AppPageDetailEntity get settings => AppPageDetailEntity(
-  //   pageName: Texts(context).to.settingsPageName,
+  // static AppPageDetailEntity get settings => AppPageDetailEntity(
+  //   pageName: Texts.to.settingsPageName,
   //   pageRoute: _getPageRoute(SettingsPage),
   //   iconCode: AppIcons.settings.icon!.codePoint,
   //   bottomBarItemNumber: 1,
   //   drawerPresence: true,
   // );
 
-  // AppPageDetailEntity get about => AppPageDetailEntity(
-  //   pageName: Texts(context).to.aboutPageName,
+  // static AppPageDetailEntity get about => AppPageDetailEntity(
+  //   pageName: Texts.to.aboutPageName,
   //   pageRoute: _getPageRoute(AboutPage),
   //   iconCode: AppIcons.about.icon!.codePoint,
   //   drawerPresence: true,
   // );
 
-  // AppPageDetailEntity get update => AppPageDetailEntity(
-  //   pageName: Texts(context).to.updatePageName,
+  // static AppPageDetailEntity get update => AppPageDetailEntity(
+  //   pageName: Texts.to.updatePageName,
   //   pageRoute: _getPageRoute(UpdatePage),
   //   iconCode: AppIcons.update.icon!.codePoint,
   //   drawerPresence: true,
   // );
 
-  // AppPageDetailEntity get notFound => AppPageDetailEntity(
-  //   pageName: Texts(context).to.notFoundPageName,
+  // static AppPageDetailEntity get notFound => AppPageDetailEntity(
+  //   pageName: Texts.to.notFoundPageName,
   //   pageRoute: _getPageRoute(NotFoundPage),
   // );
 }

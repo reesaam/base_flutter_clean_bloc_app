@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../../components/failures/local_exception.dart';
 import '../../../components/failures/network_exception.dart';
 import '../../../core/app_localization.dart';

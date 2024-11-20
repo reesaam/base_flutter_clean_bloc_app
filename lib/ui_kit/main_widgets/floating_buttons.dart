@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/extensions/extensions_on_data_types/extension_icon.dart';
+import '../../extensions/data_types/icon_extensions.dart';
 
 
 class AppFloatingActionButtons extends FloatingActionButton {

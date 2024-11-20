@@ -3,17 +3,21 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:timezone/timezone.dart';
 
 import '../components/di/di_setup.dart';
+import '../extensions/data_types/language_extensions.dart';
+import '../extensions/data_types/list_extensions.dart';
+import '../extensions/data_types/time_zone_extensions.dart';
 import '../shared/shared_mems/core_mems/app_setting_data/app_setting_data.dart';
 import 'annotations/dependency_injection_annotation.dart';
+import 'context_holder.dart';
+import 'core_functions.dart';
 import 'core_info/core_defaults.dart';
 import 'core_resources/countries.dart';
 import 'core_resources/core_enums.dart';
 import '../generated/l10n.dart';
 
 class Texts {
-  final BuildContext context;
-  Texts(this.context);
-  S get to => S.of(context);
+  Texts();
+  static S get to => S.of(getContext);
 }
 
 @DI.component
@@ -38,7 +42,7 @@ class AppLocalization {
   String timeZoneAbbreviation = CoreDefaults.defaultCountry.timeZoneAbbreviation?.getMiddleElement() ?? '';
   bool isDst = CoreDefaults.defaultCountry.hasDst;
 
-  Locale getLocale() => _loadData().language.getLocale();
+  Locale getLocale() => _loadData().language?.getLocale() ?? AppLanguages.english.getLocale();
 
   TextDirection getTextDirection() => _loadData().language.getLocale() == persian ? TextDirection.rtl : TextDirection.ltr;
 
@@ -63,4 +67,4 @@ class AppLocalization {
   }
 }
 
-AppSettingDataEntity _loadData() => loadAppData()?.settings ?? const AppSettingDataEntity();
+AppSettingDataEntity _loadData() => loadAppData()?.settingsEntity ?? const AppSettingDataEntity();

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/app_localization.dart';
-import '../../../core/app_routing/app_routing.dart';
-import '../../shared/shared_models/core_models/app_page_detail/app_page_detail.dart';
+import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/page_details.dart';
-import '../../core/extensions/extensions_on_data_types/extension_int.dart';
+import '../../extensions/data_types/int_extensions.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
 import '../theme/themes.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
@@ -18,7 +18,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   RxInt selectedIndex = 0.obs;
-  List<AppPageDetail> pagesList = AppPageDetails.listPages.where((element) => element.bottomBarItemNumber != null).toList();
+  List<AppPageDetailEntity> pagesList = AppPageDetails.listPages.where((element) => element.bottomBarItemNumber != null).toList();
 
   @override
   void initState() {
@@ -46,12 +46,12 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
         ));
   }
 
-  BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetail route) => BottomNavigationBarItem(
+  BottomNavigationBarItem _generateBottomNavigationBarItem(AppPageDetailEntity route) => BottomNavigationBarItem(
         icon: _createIcon(route),
         label: _createLabel(route),
       );
 
-  Icon _createIcon(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode.toIcon();
+  Icon _createIcon(AppPageDetailEntity route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode?.toIcon() ?? AppIcons.none;
 
-  String _createLabel(AppPageDetail route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.empty;
+  String _createLabel(AppPageDetailEntity route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.empty;
 }

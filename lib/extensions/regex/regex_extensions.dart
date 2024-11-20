@@ -33,5 +33,21 @@ extension ExtensionAllRegexes on AppRegexListEntity {
       ]));
 
   AppRegexListEntity exceptionsOfFormatting() => AppRegexListEntity(
-      regexesListEntity: AppRegexListEntity().all.regexesListEntity?.where((element) => element.isExceptionOfFormatting == true).toList());
+      regexesListEntity: const AppRegexListEntity().all.regexesListEntity?.where((element) => element.isExceptionOfFormatting == true).toList());
+}
+
+extension Equal on AppRegexEntity {
+  bool equalTo(AppRegexEntity regExp) => regexValue == regExp.regexValue;
+}
+
+extension GetRegExp on AppRegexEntity {
+  RegExp get regExp => RegExp(regexValue ?? '');
+}
+
+extension ListContains on List<AppRegexEntity> {
+  bool contains(AppRegexEntity regExp) => where((element) => element.equalTo(regExp)).isNotEmpty;
+}
+
+extension ListEntityContains on AppRegexListEntity {
+  bool contains(AppRegexEntity regExp) => regexesListEntity?.where((element) => element.equalTo(regExp)).isNotEmpty ?? false;
 }

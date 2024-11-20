@@ -110,7 +110,7 @@ class DioFunctions {
   static _increaseStatisticApiCall() => AppStatistics().increaseApiCalls();
 
   ///TODO: Implementation
-  static Future<String> _getSavePath(BuildContext context) async => Texts(context).to.empty;
+  static Future<String> _getSavePath(BuildContext context) async => Texts.to.empty;
 
   static _printResponse(String method, Response response) {
     appDebugPrint('==> $method Method Successful Response:');

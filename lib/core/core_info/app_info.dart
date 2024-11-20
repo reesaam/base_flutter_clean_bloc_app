@@ -1,4 +1,6 @@
-import '../../shared/shared_models/core_models/app_version/app_version.dart';
+import 'package:flutter/material.dart';
+
+import '../../shared/shared_mems/core_mems/app_version/app_version.dart';
 import '../core_functions.dart';
 
 class AppInfo {
@@ -7,9 +9,9 @@ class AppInfo {
   static String get website => '';
 
   //Versioning
-  static AppVersion get currentVersion => const AppVersion(version: '0.0.1');
-  static AppVersionsList get versions => loadAppData()?.appVersions ?? AppVersionsList();
-  static int get versionsCounter => versions.versionsList.length;
+  static AppVersionEntity get currentVersion => const AppVersionEntity(version: '0.0.1');
+  static AppVersionListEntity get versions => loadAppData()?.appVersionsEntity ?? const AppVersionListEntity();
+  static int get versionsCounter => versions.versionListEntity?.length ?? 0;
 
   //Domains
   static String get baseUrl => 'resam.site';
