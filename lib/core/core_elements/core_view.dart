@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../ui_kit/resources/paddings.dart';
-import '../../ui_kit/theme/themes.dart';
-import '../core_functions.dart';
+import '../../extensions/context/context_extensions.dart';
 import '../../ui_kit/core_widgets.dart';
-import 'core_controller.dart';
+import '../../ui_kit/resources/paddings.dart';
 
-abstract class CoreView<Controller extends CoreController> extends GetView<Controller> {
+abstract class CoreView extends StatelessWidget {
   const CoreView({super.key});
 
   ///Main Widgets
@@ -27,40 +24,28 @@ abstract class CoreView<Controller extends CoreController> extends GetView<Contr
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: controller.pageDetail.bottomBarItemNumber == null,
-        onPopInvoked: (didPop) => didPop == false ? appExitDialog() : null,
-        child: _pageScaffold,
-      );
-
-  Widget get _pageScaffold => Scaffold(
-        backgroundColor: AppThemes.to.canvasColor,
-        resizeToAvoidBottomInset: true,
-        appBar: appBar,
-        drawer: drawer,
-        drawerEnableOpenDragGesture: true,
-        drawerEdgeDragWidth: Get.width / 4,
-        body: _pageBody,
-        bottomNavigationBar: bottomNavigationBar,
-        floatingActionButton: floatingActionButton,
-        floatingActionButtonLocation: floatingActionButtonLocation ?? FloatingActionButtonLocation.endFloat,
-        bottomSheet: bottomSheet,
-      );
-
-  Widget get _pageBody => SafeArea(
-        child: Column(children: [
-          header == null ? shrinkSizedBox : header!,
-          //Main Body
-          Expanded(
-              child: Padding(
-                  padding: pagePadding ?? AppPaddings.pages,
-                  child: scrollable
-                      ? SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
-                          physics: const BouncingScrollPhysics(),
-                          child: body,
-                        )
-                      : body)),
-          footer == null ? shrinkSizedBox : footer!,
-        ]),
-      );
+      child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          drawerEnableOpenDragGesture: true,
+          drawerEdgeDragWidth: context.width / 4,
+          appBar: appBar,
+          bottomNavigationBar: bottomNavigationBar,
+          bottomSheet: bottomSheet,
+          floatingActionButton: floatingActionButton,
+          floatingActionButtonLocation: floatingActionButtonLocation ?? FloatingActionButtonLocation.endFloat,
+          body: SafeArea(
+              child: Column(children: [
+            header ?? shrinkSizedBox,
+            Expanded(
+                child: Padding(
+                    padding: pagePadding ?? AppPaddings.pages,
+                    child: scrollable
+                        ? SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            scrollDirection: Axis.vertical,
+                            child: body,
+                          )
+                        : body)),
+            footer ?? shrinkSizedBox,
+          ]))));
 }

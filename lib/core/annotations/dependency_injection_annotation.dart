@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 @immutable
-class DI {
-  final String? as;
-  const DI({this.as});
-
-  const DI.controller({this.as});
-  const DI.component({this.as});
-  const DI.repository({this.as});
+class DI extends Injectable {
+  static const controller = Injectable();
+  static const component = Injectable();
+  static const repository = Injectable();
 }
