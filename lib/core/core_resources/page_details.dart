@@ -3,7 +3,7 @@ import '../app_localization.dart';
 import '../routing/app_router.dart';
 import 'icons.dart';
 
-class AppPageDetails {
+class AppPageDetailsList {
 
   static List<AppPageDetailEntity> get listPages => [
         // splashScreen,

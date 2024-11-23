@@ -21,7 +21,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   final AppRouter _appRouter = getIt<AppRouter>();
   RxInt selectedIndex = 0.obs;
-  List<AppPageDetailEntity> pagesList = AppPageDetails.listPages.where((element) => element.bottomBarItemNumber != null).toList();
+  List<AppPageDetailEntity> pagesList = AppPageDetailsList.listPages.where((element) => element.bottomBarItemNumber != null).toList();
 
   @override
   void initState() {
