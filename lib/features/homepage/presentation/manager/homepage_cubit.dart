@@ -17,7 +17,7 @@ class HomepageCubit extends CoreCubit<HomepageState> {
   HomepageCubit() : super(const HomepageState.initial());
 
   @override
-  AppPageDetailEntity get pageDetail => AppPageDetailsList.homepage;
+  AppPageDetailEntity get pageDetail => AppPageDetailsList.to.homepage;
 
   @override
   List<BlocProvider> get cubits => [
