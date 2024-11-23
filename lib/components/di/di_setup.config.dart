@@ -12,7 +12,6 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../../core/app_localization.dart' as _i19;
-import '../../core/routing/app_router.dart' as _i249;
 import '../../features/homepage/presentation/manager/homepage_cubit.dart'
     as _i189;
 import '../../ui_kit/theme/themes.dart' as _i870;
@@ -52,7 +51,6 @@ _i174.GetIt $initGetIt(
   gh.factory<_i893.AppStatistics>(() => _i893.AppStatistics());
   gh.factory<_i627.AppStorage>(() => _i627.AppStorage());
   gh.factory<_i19.AppLocalization>(() => _i19.AppLocalization());
-  gh.factory<_i249.AppRouter>(() => _i249.AppRouter());
   gh.factory<_i189.HomepageCubit>(() => _i189.HomepageCubit());
   gh.factory<_i870.AppThemes>(() => _i870.AppThemes());
   gh.factory<_i224.GeneralException>(() => _i224.GeneralException(
