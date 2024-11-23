@@ -42,7 +42,7 @@ class AppLocalization {
   String timeZoneAbbreviation = CoreDefaults.defaultCountry.timeZoneAbbreviation?.getMiddleElement() ?? '';
   bool isDst = CoreDefaults.defaultCountry.hasDst;
 
-  Locale getLocale() => _loadData().language?.getLocale() ?? AppLanguages.english.getLocale();
+  Locale get getLocale => _loadData().language?.getLocale() ?? AppLanguages.english.getLocale();
 
   TextDirection getTextDirection() => _loadData().language.getLocale() == persian ? TextDirection.rtl : TextDirection.ltr;
 

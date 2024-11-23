@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
       theme: AppThemes.to,
       themeMode: ThemeMode.system,
       darkTheme: AppThemes.darkTheme,
-      locale: AppLocalization.to.getLocale(),
+      locale: AppLocalization.to.getLocale,
       localizationsDelegates: AppLocalization.to.localizationDelegates,
       supportedLocales: AppLocalization.to.supportedLocales,
     );

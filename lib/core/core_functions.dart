@@ -7,7 +7,6 @@ import '../components/storage/app_storage_module.dart';
 import '../shared/shared_mems/core_mems/app_data_mem/app_data.dart';
 import '../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../shared/shared_mems/core_mems/app_setting_data_mem/app_setting_data.dart';
-import '../shared/shared_mems/core_mems/app_data_mem/app_data.dart';
 import '../shared/shared_mems/core_mems/app_statistics_data_mem/app_statistics_data.dart';
 import '../shared/shared_mems/core_mems/app_version_mem/app_version.dart';
 import '../ui_kit/dialogs/app_alert_dialogs.dart';
