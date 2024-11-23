@@ -4,7 +4,7 @@ import '../../components/di/di_setup.dart';
 import '../../components/storage/app_storage_module.dart';
 import '../../core/annotations/dependency_injection_annotation.dart';
 import '../../core/core_resources/defaults.dart';
-import '../../shared/helper_mems/theme_data/theme_data_model.dart';
+import '../../shared/helper_mems/theme_data/theme_data.dart';
 import '../resources/elements.dart';
 import 'themes_variables.dart';
 

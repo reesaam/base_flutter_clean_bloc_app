@@ -1,6 +1,6 @@
 import '../../core/annotations/dependency_injection_annotation.dart';
 import '../../extensions/core/statistics_extension.dart';
-import '../../shared/shared_mems/core_mems/app_statistics_data/app_statistics_data.dart';
+import '../../shared/shared_mems/core_mems/app_statistics_data_mem/app_statistics_data.dart';
 import '../di/di_setup.dart';
 
 @DI.component

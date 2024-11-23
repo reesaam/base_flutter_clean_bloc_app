@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'push_notification_base_model.dart';
+part of 'push_notification_base.dart';
 
 // **************************************************************************
 // Generator: AnnotationBuilder

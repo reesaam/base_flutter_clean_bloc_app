@@ -13,7 +13,7 @@ import '../../core/core_resources/texts.dart';
 import '../../extensions/data_types/date_time_extensions.dart';
 import '../../extensions/data_types/duration_extensions.dart';
 import '../../extensions/data_types/string_extensions.dart';
-import '../../shared/shared_mems/core_mems/app_data/app_data.dart';
+import '../../shared/shared_mems/core_mems/app_data_mem/app_data.dart';
 import '../di/di_setup.dart';
 import '../failures/local_exception.dart';
 import '../file_functions/file_functions.dart';

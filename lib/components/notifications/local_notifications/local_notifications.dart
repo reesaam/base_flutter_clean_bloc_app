@@ -8,7 +8,6 @@ import 'local_notifications_repository.dart';
 
 @DI.component
 class AppLocalNotifications extends AppNotificationsRepository {
-
   static AppLocalNotifications get to => getIt<AppLocalNotifications>();
 
   @override

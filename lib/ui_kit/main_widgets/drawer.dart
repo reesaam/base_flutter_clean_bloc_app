@@ -10,7 +10,7 @@ import '../../core/core_resources/logos.dart';
 import '../../core/core_resources/page_details.dart';
 import '../../core/routing/app_router.dart';
 import '../../extensions/data_types/int_extensions.dart';
-import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../resources/paddings.dart';
 import '../resources/sizes.dart';
 import '../resources/spaces.dart';

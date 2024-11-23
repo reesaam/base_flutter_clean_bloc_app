@@ -1,4 +1,4 @@
-import '../../shared/helper_mems/custom_duration/custom_duration.dart';
+import '../../shared/helper_mems/custom_duration_mem/custom_duration.dart';
 import 'duration_extensions.dart';
 
 extension ExtensionCustomDuration on CustomDurationEntity {

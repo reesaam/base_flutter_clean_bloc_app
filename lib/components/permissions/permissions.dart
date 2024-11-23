@@ -3,7 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/annotations/dependency_injection_annotation.dart';
 import '../../extensions/permissions/permission_extensions.dart';
-import '../../shared/base_models/permission_base_response_model/permission_base_response.dart';
+import '../../shared/base_mems/permission_base_response_mem/permission_base_response.dart';
 import '../di/di_setup.dart';
 
 @DI.component

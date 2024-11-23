@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/app_localization.dart';
 import '../../extensions/material_widgets/extension_on_text.dart';
-import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../resources/paddings.dart';
 import '../theme/themes.dart';
 

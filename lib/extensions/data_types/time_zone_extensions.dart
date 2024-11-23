@@ -3,7 +3,7 @@ import 'package:timezone/timezone.dart';
 
 import '../../core/app_localization.dart';
 import '../../core/core_resources/countries.dart';
-import '../../shared/helper_mems/custom_duration/custom_duration.dart';
+import '../../shared/helper_mems/custom_duration_mem/custom_duration.dart';
 import 'custom_duration_extensions.dart';
 import 'duration_extensions.dart';
 

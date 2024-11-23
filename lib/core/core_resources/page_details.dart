@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../extensions/core/routing_extensions.dart';
-import '../../features/homepage/presentation/pages/homepage_view.dart';
-import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
+import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../app_localization.dart';
 import '../routing/app_router.dart';
 import 'icons.dart';

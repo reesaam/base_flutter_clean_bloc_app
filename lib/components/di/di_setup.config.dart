@@ -22,7 +22,11 @@ import '../failures/local_exception.dart' as _i258;
 import '../failures/network_exception.dart' as _i89;
 import '../file_functions/file_functions.dart' as _i322;
 import '../network/dio.dart' as _i74;
+import '../notifications/local_notifications/local_notification_controller.dart'
+    as _i84;
+import '../notifications/local_notifications/local_notifications.dart' as _i682;
 import '../permissions/permissions.dart' as _i816;
+import '../share/share.dart' as _i854;
 import '../statistics/statistics.dart' as _i893;
 import '../storage/app_storage_module.dart' as _i627;
 
@@ -38,15 +42,19 @@ _i174.GetIt $initGetIt(
     environmentFilter,
   );
   gh.factory<_i273.AppConnectionChecker>(() => _i273.AppConnectionChecker());
-  gh.factory<_i249.AppRouter>(() => _i249.AppRouter());
-  gh.factory<_i189.HomepageCubit>(() => _i189.HomepageCubit());
   gh.factory<_i322.AppFileFunctions>(() => _i322.AppFileFunctions());
   gh.factory<_i74.DioCore>(() => _i74.DioCore());
+  gh.factory<_i682.AppLocalNotifications>(() => _i682.AppLocalNotifications());
+  gh.factory<_i84.AppLocalNotificationController>(
+      () => _i84.AppLocalNotificationController());
+  gh.factory<_i816.AppPermissions>(() => _i816.AppPermissions());
+  gh.factory<_i854.AppShare>(() => _i854.AppShare());
   gh.factory<_i893.AppStatistics>(() => _i893.AppStatistics());
   gh.factory<_i627.AppStorage>(() => _i627.AppStorage());
   gh.factory<_i19.AppLocalization>(() => _i19.AppLocalization());
+  gh.factory<_i249.AppRouter>(() => _i249.AppRouter());
+  gh.factory<_i189.HomepageCubit>(() => _i189.HomepageCubit());
   gh.factory<_i870.AppThemes>(() => _i870.AppThemes());
-  gh.factory<_i816.AppPermissions>(() => _i816.AppPermissions());
   gh.factory<_i224.GeneralException>(() => _i224.GeneralException(
         message: gh<String>(),
         statusCode: gh<int>(),

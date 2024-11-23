@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'components/di/di_setup.dart';
+import 'components/notifications/local_notifications/local_notifications.dart';
 import 'core/app_localization.dart';
 import 'core/core_functions.dart';
 import 'core/core_info/app_info.dart';
@@ -17,7 +18,7 @@ void initProject() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await GetStorage.init().withStatusPrint(isLog: true, featureName: 'Get Storage Initialization');
-  // await AppLocalNotifications().init().withStatusPrint(isLog: true, featureName: 'App Local Notifications Initialization');
+  await AppLocalNotifications().init().withStatusPrint(isLog: true, featureName: 'App Local Notifications Initialization');
   appInitializationFunction();
   runApp(const MainApp());
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_localization.dart';
-import '../../shared/helper_mems/custom_duration/custom_duration.dart';
+import '../../shared/helper_mems/custom_duration_mem/custom_duration.dart';
 
 extension ExtensionDateTimeDurationCalculation on Duration {
   CustomDurationEntity calculateDifference() {

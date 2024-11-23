@@ -6,7 +6,7 @@ import '../components/di/di_setup.dart';
 import '../extensions/data_types/language_extensions.dart';
 import '../extensions/data_types/list_extensions.dart';
 import '../extensions/data_types/time_zone_extensions.dart';
-import '../shared/shared_mems/core_mems/app_setting_data/app_setting_data.dart';
+import '../shared/shared_mems/core_mems/app_setting_data_mem/app_setting_data.dart';
 import 'annotations/dependency_injection_annotation.dart';
 import 'context_holder.dart';
 import 'core_functions.dart';

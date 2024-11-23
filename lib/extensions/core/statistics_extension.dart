@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-
 import '../../core/core_functions.dart';
-import '../../shared/shared_mems/core_mems/app_statistics_data/app_statistics_data.dart';
+import '../../shared/shared_mems/core_mems/app_statistics_data_mem/app_statistics_data.dart';
 
 extension ExtensionAppStatisticsClear on AppStatisticsDataEntity {
   AppStatisticsDataEntity clearData() => const AppStatisticsDataEntity();

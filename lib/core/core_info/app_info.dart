@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/shared_mems/core_mems/app_version/app_version.dart';
+import '../../shared/shared_mems/core_mems/app_version_mem/app_version.dart';
 import '../core_functions.dart';
 
 class AppInfo {
