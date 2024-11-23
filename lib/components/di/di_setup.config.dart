@@ -22,6 +22,7 @@ import '../failures/local_exception.dart' as _i258;
 import '../failures/network_exception.dart' as _i89;
 import '../file_functions/file_functions.dart' as _i322;
 import '../network/dio.dart' as _i74;
+import '../permissions/permissions.dart' as _i816;
 import '../statistics/statistics.dart' as _i893;
 import '../storage/app_storage_module.dart' as _i627;
 
@@ -45,6 +46,7 @@ _i174.GetIt $initGetIt(
   gh.factory<_i627.AppStorage>(() => _i627.AppStorage());
   gh.factory<_i19.AppLocalization>(() => _i19.AppLocalization());
   gh.factory<_i870.AppThemes>(() => _i870.AppThemes());
+  gh.factory<_i816.AppPermissions>(() => _i816.AppPermissions());
   gh.factory<_i224.GeneralException>(() => _i224.GeneralException(
         message: gh<String>(),
         statusCode: gh<int>(),
