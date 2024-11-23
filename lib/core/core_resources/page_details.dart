@@ -4,6 +4,7 @@ import '../../extensions/core/routing_extensions.dart';
 import '../../features/homepage/presentation/pages/homepage_view.dart';
 import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
 import '../app_localization.dart';
+import '../routing/app_router.dart';
 import 'icons.dart';
 
 class AppPageDetails {
@@ -83,7 +84,7 @@ class AppPageDetails {
 
   static AppPageDetailEntity get homepage => AppPageDetailEntity(
     pageName: Texts.to.homePageName,
-    pageRoute: _getPageRoute(HomePage),
+    pageRoute: HomeRoute.page.name,
     iconCode: AppIcons.home.icon!.codePoint,
     bottomBarItemNumber: 0,
     drawerPresence: true,
@@ -116,5 +117,3 @@ class AppPageDetails {
   //   pageRoute: _getPageRoute(NotFoundPage),
   // );
 }
-
-String _getPageRoute(Type page) => page.route;

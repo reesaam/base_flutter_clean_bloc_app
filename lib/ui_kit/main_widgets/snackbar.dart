@@ -4,7 +4,6 @@ import '../../../core/core_functions.dart';
 import '../../core/core_resources/defaults.dart';
 import '../../extensions/material_widgets/extension_on_text.dart';
 import '../core_widgets.dart';
-import '../resources/elements.dart';
 import '../resources/paddings.dart';
 import '../resources/spaces.dart';
 import '../buttons/app_general_button.dart';
@@ -94,7 +93,7 @@ _showSnackBar({
   String? message,
   String? title,
   Widget? widget,
-  Function(GetSnackBar)? onTap,
+  Function()? onTap,
   Icon? icon,
   Function()? leadingAction,
   Icon? leadingIcon,
@@ -112,49 +111,54 @@ _showSnackBar({
   bool? showProgressIndicator,
   AnimationController? progressIndicatorController,
 }) =>
-    GetSnackBar(
+    SnackBar(
       //Elements
-      titleText: title == null ? shrinkSizedBox : Text(title).withColor(textColor ?? AppThemes.to.canvasColor),
-      messageText: widget ??
-          Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                message == null ? const SizedBox.shrink() : Text(message).withColor(textColor ?? AppThemes.to.canvasColor),
-                buttonText == null
-                    ? shrinkSizedBox
-                    : Column(children: [
-                  AppSpaces.h20,
-                  AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
-                ]),
-              ]),
-      onTap: onTap == null ? null : (snack) => onTap(snack),
-      mainButton: leadingIcon == null
-          ? null
-          : leadingText == null
-          ? AppIconButton(
-        primaryColor: true,
-        icon: leadingIcon,
-        onTap: leadingAction ?? nullFunction,
-      )
-          : _buttonWidget(leadingAction ?? nullFunction, leadingText),
-
-      //Specifications
+      content: Row(
+        children: [
+          leadingIcon == null
+              ? shrinkSizedBox
+              : leadingText == null
+              ? AppIconButton(
+            primaryColor: true,
+            icon: leadingIcon,
+            onTap: leadingAction ?? nullFunction,
+          )
+              : _buttonWidget(leadingAction ?? nullFunction, leadingText),
+          Column(children: [
+            title == null ? shrinkSizedBox : Text(title).withColor(textColor ?? AppThemes.to.canvasColor),
+            widget ??
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      message == null ? const SizedBox.shrink() : Text(message).withColor(textColor ?? AppThemes.to.canvasColor),
+                      buttonText == null
+                          ? shrinkSizedBox
+                          : Column(children: [
+                        AppSpaces.h20,
+                        AppGeneralButton(text: buttonText, primaryColor: true, onTap: buttonAction ?? nullFunction),
+                      ]),
+                    ]),
+          ]),
+        ],
+      ),
+      action: onTap == null ? () {} : onTap(),
       padding: padding ?? AppPaddings.snackBar,
       margin: margin ?? AppPaddings.snackBar,
-      snackPosition: appDefaultSnackPosition,
-      snackStyle: SnackStyle.FLOATING,
-      animationDuration: appSnackBarDefaultAnimationDuration,
+      behavior: SnackBarBehavior.floating,
+      // snackPosition: appDefaultSnackPosition,
+      // snackStyle: SnackStyle.FLOATING,
+      // animationDuration: appSnackBarDefaultAnimationDuration,
       duration: duration ?? appSnackBarDefaultDuration,
-      isDismissible: isDismissible ?? true,
+      // isDismissible: isDismissible ?? true,
       backgroundColor: backgroundColor ?? AppThemes.to.snackBarTheme.backgroundColor ?? AppThemes.to.colorScheme.tertiary,
-      borderRadius: AppElements.defaultRadius,
-      icon: icon?.withColor(iconColor ?? textColor ?? AppThemes.to.canvasColor),
-      shouldIconPulse: false,
-      showProgressIndicator: showProgressIndicator ?? false,
-      progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? AppThemes.to.canvasColor : null,
-      progressIndicatorController: progressIndicatorController,
-    ).show();
+      // borderRadius: AppElements.defaultRadius,
+      // icon: icon?.withColor(iconColor ?? textColor ?? AppThemes.to.canvasColor),
+      // shouldIconPulse: false,
+      // showProgressIndicator: showProgressIndicator ?? false,
+      // progressIndicatorBackgroundColor: showProgressIndicator == true ? backgroundColor ?? AppThemes.to.canvasColor : null,
+      // progressIndicatorController: progressIndicatorController,
+    );
 
 Widget _buttonWidget(Function() buttonFunction, String buttonText) => AppGeneralButton(text: buttonText, onTap: buttonFunction);

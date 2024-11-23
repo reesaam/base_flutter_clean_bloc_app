@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 import '../components/storage/app_storage_module.dart';
 import '../shared/shared_mems/core_mems/app_data/app_data.dart';
@@ -19,6 +17,7 @@ import '../ui_kit/main_widgets/snackbar.dart';
 import 'app_localization.dart';
 import 'core_resources/core_enums.dart';
 import 'core_resources/core_flags.dart';
+import 'routing/app_router.dart';
 
 appInitializationFunction() {
   kIsWeb ? null : SystemChannels.textInput.invokeMethod('TextInput.hide');
@@ -28,7 +27,7 @@ void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] 
 void appLogPrint(message) => debugPrint('[LOG] $message');
 
 void popPage() {
-  Get.back();
+  AppRouter().goBack();
 }
 
 nullFunction() => null;
@@ -102,7 +101,7 @@ appExitDialog() =>
 appRestart({AppPageDetailEntity? bootPage}) async {
   showLoadingDialog();
   appLogPrint('App Reset Triggered');
-  Get.reloadAll();
+  // Get.reloadAll();
 }
 
 appReset() {}

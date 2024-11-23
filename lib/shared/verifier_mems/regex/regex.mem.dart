@@ -18,7 +18,7 @@ part of 'regex.dart';
 
 ///   Details:
 ///     Class: AppRegex
-///     Constructors Count: 12
+///     Constructors Count: 1
 ///     Variables Count: 2
 
 ///   ==> Model Class:
@@ -71,7 +71,7 @@ extension MapperExtensionOnAppRegexModel on AppRegexModel {
 
 ///   Details:
 ///     Class: AppRegexList
-///     Constructors Count: 3
+///     Constructors Count: 1
 ///     Variables Count: 1
 
 ///   ==> Model Class:

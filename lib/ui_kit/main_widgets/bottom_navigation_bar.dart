@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/app_localization.dart';
+import '../../components/di/di_setup.dart';
 import '../../core/core_resources/icons.dart';
 import '../../core/core_resources/page_details.dart';
+import '../../core/routing/app_router.dart';
 import '../../extensions/data_types/int_extensions.dart';
 import '../../shared/shared_mems/core_mems/app_page_detail/app_page_detail.dart';
 import '../theme/themes.dart';
@@ -17,6 +19,7 @@ class AppBottomNavigationBar extends StatefulWidget {
 }
 
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
+  final AppRouter _appRouter = getIt<AppRouter>();
   RxInt selectedIndex = 0.obs;
   List<AppPageDetailEntity> pagesList = AppPageDetails.listPages.where((element) => element.bottomBarItemNumber != null).toList();
 
@@ -28,7 +31,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   void _onItemTap(int index) {
     selectedIndex.value = index;
-    goToPage(pagesList[index]);
+    _appRouter.gotoPage(pagesList[index]);
   }
 
   @override
