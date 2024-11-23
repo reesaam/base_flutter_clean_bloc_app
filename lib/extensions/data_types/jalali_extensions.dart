@@ -5,10 +5,10 @@ import '../../core/app_localization.dart';
 
 
 extension ExtensionJalaliStringProvidersNull on Jalali? {
-  String toDateTimeFormat(BuildContext context) => this == null ? Texts.to.empty : this!.toDateTimeFormat();
-  String toDateFormat(BuildContext context) => this == null ? Texts.to.empty : this!.toDateFormat();
-  String toTimeFormat(BuildContext context) => this == null ? Texts.to.empty : this!.toTimeFormat();
-  String toTimeFormatWithSeconds(BuildContext context) => this == null ? Texts.to.empty : this!.toTimeFormatWithSeconds();
+  String toDateTimeFormat(BuildContext context) => this == null ? Texts(context).to.empty : this!.toDateTimeFormat();
+  String toDateFormat(BuildContext context) => this == null ? Texts(context).to.empty : this!.toDateFormat();
+  String toTimeFormat(BuildContext context) => this == null ? Texts(context).to.empty : this!.toTimeFormat();
+  String toTimeFormatWithSeconds(BuildContext context) => this == null ? Texts(context).to.empty : this!.toTimeFormatWithSeconds();
 }
 
 extension ExtensionJalaliStringProvider on Jalali {

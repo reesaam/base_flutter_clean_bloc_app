@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_localization.dart';
-import '../../core/context_holder.dart';
 import '../../core/core_functions.dart';
 import '../../extensions/data_types/list_extensions.dart';
 import '../buttons/app_general_button.dart';
@@ -11,40 +10,41 @@ import '../resources/elements.dart';
 import '../resources/paddings.dart';
 
 class AppAlertDialogs {
-  static withYesNo(
+  static withYesNo(BuildContext context,
       {String? title, required String text, required Function() onTapYes, Function()? onTapNo, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.no, onTap: onTapNo ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.yes, primaryColor: true, onTap: onTapYes),
+      AppGeneralButton(text: Texts(context).to.no, onTap: onTapNo ?? _onTapCancel),
+      AppGeneralButton(text: Texts(context).to.yes, primaryColor: true, onTap: onTapYes),
     ];
-    await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
+    await _appAlertDialog(context, title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
-  static withOkCancel(
+  static withOkCancel(BuildContext context,
       {String? title, required String text, required Function() onTapOk, Function()? onTapCancel, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.cancel, onTap: onTapCancel ?? _onTapCancel),
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts(context).to.cancel, onTap: onTapCancel ?? _onTapCancel),
+      AppGeneralButton(text: Texts(context).to.ok, primaryColor: true, onTap: onTapOk),
     ];
-    await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
+    await _appAlertDialog(context, title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 
-  static withOk({String? title, required String text, required Function() onTapOk, bool? dismissible}) async {
+  static withOk(BuildContext context, {String? title, required String text, required Function() onTapOk, bool? dismissible}) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts(context).to.ok, primaryColor: true, onTap: onTapOk),
     ];
-    await _appAlertDialog(title: title, text: text, buttons: buttons, dismissible: dismissible);
+    await _appAlertDialog(context, title: title, text: text, buttons: buttons, dismissible: dismissible);
   }
 }
 
-_appAlertDialog({
+_appAlertDialog(
+  BuildContext context, {
   String? title,
   required String text,
   required List<Widget> buttons,
   bool? dismissible,
 }) async =>
     await showDialog(
-        context: getContext,
+        context: context,
         useSafeArea: true,
         useRootNavigator: true,
         barrierDismissible: dismissible ?? false,
@@ -86,4 +86,4 @@ List<Widget> _renderButtonsAlertDialog(List<Widget> buttons) {
   return [Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: list)];
 }
 
-_onTapCancel() => popPage();
+_onTapCancel(BuildContext context) => popPage(context);

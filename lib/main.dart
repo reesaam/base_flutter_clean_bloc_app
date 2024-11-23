@@ -26,18 +26,16 @@ void initProject() async {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: AppInfo.appName,
-      routerConfig: AppRouter().config(),
-      color: AppThemes.to.canvasColor,
-      theme: AppThemes.to,
-      themeMode: ThemeMode.system,
-      darkTheme: AppThemes.darkTheme,
-      locale: AppLocalization.to.getLocale,
-      localizationsDelegates: AppLocalization.to.localizationDelegates,
-      supportedLocales: AppLocalization.to.supportedLocales,
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: AppInfo.appName,
+        routerConfig: AppRouter().config(),
+        color: AppThemes.to.canvasColor,
+        theme: AppThemes.to,
+        themeMode: ThemeMode.system,
+        darkTheme: AppThemes.darkTheme,
+        locale: AppLocalization.to.getLocale(context),
+        localizationsDelegates: AppLocalization.to.localizationDelegates,
+        supportedLocales: AppLocalization.to.supportedLocales,
+      );
 }

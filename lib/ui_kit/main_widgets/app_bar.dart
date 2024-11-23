@@ -7,7 +7,7 @@ import '../resources/paddings.dart';
 import '../theme/themes.dart';
 
 class AppAppBar extends AppBar {
-  AppAppBar({
+  AppAppBar(this.context, {
     super.key,
     required this.pageDetail,
     this.withOutTitle,
@@ -16,6 +16,7 @@ class AppAppBar extends AppBar {
     this.barAction,
   }) : super();
 
+  final BuildContext context;
   final AppPageDetailEntity pageDetail;
   final bool? withOutTitle;
   final Widget? barTitle;
@@ -39,6 +40,6 @@ class AppAppBar extends AppBar {
   @override
   bool? get centerTitle => true;
 
-  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts.to.empty, style: AppThemes.to.textTheme.titleSmall)
+  Widget get _normalTextTitle => Text(pageDetail.pageName ?? Texts(context).to.empty, style: AppThemes.to.textTheme.titleSmall)
       .withColor(AppThemes.to.appBarTheme.foregroundColor ?? AppThemes.to.primaryColor);
 }

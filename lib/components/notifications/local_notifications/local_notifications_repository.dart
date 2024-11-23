@@ -196,8 +196,8 @@ class AppLocalNotificationsRepository {
           bool? requireInputText,
           bool? showInCompactView}) =>
       NotificationActionButton(
-          key: key ?? Texts.to.empty,
-          label: label ?? Texts.to.empty,
+          key: key ?? '',
+          label: label ?? '',
           icon: icon,
           autoDismissible: autoDismissible ?? true,
           actionType: actionType ?? ActionType.Default,

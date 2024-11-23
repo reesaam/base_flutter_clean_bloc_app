@@ -7,14 +7,15 @@ import '../extensions/data_types/language_extensions.dart';
 import '../extensions/data_types/time_zone_extensions.dart';
 import '../shared/shared_mems/core_mems/app_setting_data_mem/app_setting_data.dart';
 import 'annotations/dependency_injection_annotation.dart';
-import 'context_holder.dart';
 import 'core_functions.dart';
 import 'core_resources/countries.dart';
 import 'core_resources/core_enums.dart';
 import '../generated/l10n.dart';
 
 class Texts {
-  static S get to => S.of(getContext);
+  BuildContext context;
+  Texts(this.context);
+  S get to => S.of(context);
 }
 
 @DI.component
@@ -34,9 +35,9 @@ class AppLocalization {
   LocalizationsDelegate get _widgets => GlobalWidgetsLocalizations.delegate;
   LocalizationsDelegate get _cupertino => GlobalCupertinoLocalizations.delegate;
 
-  Locale get getLocale => _loadData().language?.getLocale() ?? AppLanguages.english.getLocale();
+  Locale getLocale(BuildContext context) => _loadData(context).language?.getLocale() ?? AppLanguages.english.getLocale();
 
-  TextDirection get getTextDirection => _loadData().language?.getLocale() == persian ? TextDirection.rtl : TextDirection.ltr;
+  TextDirection getTextDirection(BuildContext context) => _loadData(context).language?.getLocale() == persian ? TextDirection.rtl : TextDirection.ltr;
 
   TimeZone get getTimeZone {
     DateTime currentTime = DateTime.now();
@@ -59,4 +60,4 @@ class AppLocalization {
   }
 }
 
-AppSettingDataEntity _loadData() => loadAppData()?.settingsEntity ?? const AppSettingDataEntity();
+AppSettingDataEntity _loadData(BuildContext context) => loadAppData()?.settingsEntity ?? const AppSettingDataEntity();

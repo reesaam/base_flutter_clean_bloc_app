@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
+import '../../extensions/data_types/list_extensions.dart';
 import '../buttons/app_general_button.dart';
 import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
@@ -10,19 +10,21 @@ import '../resources/elements.dart';
 import '../resources/paddings.dart';
 
 class AppAlertWidgetDialogs {
-  _onTapCancel() => popPage();
+  _onTapCancel(BuildContext context) => popPage(context);
 
-  withOkCancel({
+  withOkCancel(
+    BuildContext context, {
     String? title,
     required Widget widget,
     required Function() onTapOk,
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(text: Texts.to.cancel, onTap: _onTapCancel),
-      AppGeneralButton(text: Texts.to.ok, primaryColor: true, onTap: onTapOk),
+      AppGeneralButton(text: Texts(context).to.cancel, onTap: _onTapCancel),
+      AppGeneralButton(text: Texts(context).to.ok, primaryColor: true, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
+      context,
       title: title,
       widget: widget,
       buttons: buttons,
@@ -30,16 +32,18 @@ class AppAlertWidgetDialogs {
     );
   }
 
-  withOk({
+  withOk(
+    BuildContext context, {
     String? title,
     required Widget widget,
     required Function() onTapOk,
     bool? dismissible,
   }) async {
     List<Widget> buttons = [
-      AppGeneralButton(primaryColor: true, text: Texts.to.ok, onTap: onTapOk),
+      AppGeneralButton(primaryColor: true, text: Texts(context).to.ok, onTap: onTapOk),
     ];
     await _appAlertWidgetDialog(
+      context,
       title: title,
       widget: widget,
       buttons: buttons,
@@ -47,13 +51,15 @@ class AppAlertWidgetDialogs {
     );
   }
 
-  withoutButton({
+  withoutButton(
+    BuildContext context, {
     String? title,
     required Widget widget,
     bool? dismissible,
   }) async {
     List<Widget> buttons = [];
     await _appAlertWidgetDialog(
+      context,
       title: title,
       widget: widget,
       buttons: buttons,
@@ -61,14 +67,15 @@ class AppAlertWidgetDialogs {
     );
   }
 
-  _appAlertWidgetDialog({
+  _appAlertWidgetDialog(
+    BuildContext context, {
     String? title,
     required Widget widget,
     required List<Widget> buttons,
     bool? dismissible,
   }) async =>
       await showDialog(
-          context: Get.context!,
+          context: context,
           useSafeArea: true,
           useRootNavigator: true,
           barrierDismissible: dismissible ?? false,

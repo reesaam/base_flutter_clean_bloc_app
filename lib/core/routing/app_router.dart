@@ -1,11 +1,11 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 import '../../components/di/di_setup.dart';
 import '../../features/homepage/presentation/pages/homepage_view.dart';
 import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../annotations/dependency_injection_annotation.dart';
-import '../context_holder.dart';
 
 part 'app_router.gr.dart';
 
@@ -22,10 +22,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: HomeRoute.page, initial: true),
       ];
 
-  gotoPage(AppPageDetailEntity page) => getContext.router.push(_findPage(page));
-  replacePage(AppPageDetailEntity page) => getContext.router.replace(_findPage(page));
+  gotoPage(BuildContext context, {required AppPageDetailEntity page}) => context.router.push(_findPage(page));
+  replacePage(BuildContext context, {required AppPageDetailEntity page}) => context.router.replace(_findPage(page));
   // popUntilPage(PageRouteInfo route) => getContext.router.popUntil(route);
-  goBack() => getContext.router.back();
+  goBack(BuildContext context) => context.router.back();
 
   _findPage(AppPageDetailEntity page) => routes.firstWhere((e) => e.page.name == page.pageRoute);
 }

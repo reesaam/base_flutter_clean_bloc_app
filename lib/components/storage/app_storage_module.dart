@@ -82,7 +82,7 @@ class AppStorage {
   }
 
   void printData({AppDataModel? appData, bool? detailsIncluded}) {
-    String unknown = Texts.to.notAvailableInitials;
+    String unknown = '';
 
     if (appData != null) {
       appLogPrint('==> App Data:');

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/context_holder.dart';
 import '../../extensions/context/context_extensions.dart';
 
 class AppPaddings extends EdgeInsets {
@@ -26,7 +25,7 @@ class AppPaddings extends EdgeInsets {
   static EdgeInsets get drawerFooter => const EdgeInsets.fromLTRB(20, 10, 0, 20);
 
   ///Modals and Dialogs
-  static EdgeInsets get generalBottomModal => EdgeInsets.fromLTRB(20, 10, 20, getContext.viewInsetsBottom);
+  static EdgeInsets generalBottomModal(BuildContext context) => EdgeInsets.fromLTRB(20, 10, 20, context.viewInsetsBottom);
   static EdgeInsets get generalAlertDialog => const EdgeInsets.all(10);
   static EdgeInsets get modalItems => const EdgeInsets.symmetric(vertical: 15);
 

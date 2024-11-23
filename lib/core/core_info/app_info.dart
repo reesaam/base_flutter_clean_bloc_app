@@ -10,8 +10,8 @@ class AppInfo {
 
   //Versioning
   static AppVersionEntity get currentVersion => const AppVersionEntity(version: '0.0.1');
-  static AppVersionListEntity get versions => loadAppData()?.appVersionsEntity ?? const AppVersionListEntity();
-  static int get versionsCounter => versions.versionListEntity?.length ?? 0;
+  static AppVersionListEntity versions(BuildContext context) => loadAppData()?.appVersionsEntity ?? const AppVersionListEntity();
+  static int versionsCounter(BuildContext context) => versions(context).versionListEntity?.length ?? 0;
 
   //Domains
   static String get baseUrl => 'resam.site';

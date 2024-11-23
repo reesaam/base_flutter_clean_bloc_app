@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../components/di/di_setup.dart';
 import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.dart';
 import '../annotations/dependency_injection_annotation.dart';
@@ -7,6 +9,8 @@ import 'icons.dart';
 
 @DI.component
 class AppPageDetailsList {
+  BuildContext context;
+  AppPageDetailsList(this.context);
   static AppPageDetailsList get to => getIt<AppPageDetailsList>();
 
   List<AppPageDetailEntity> get listPages => [
@@ -32,58 +36,58 @@ class AppPageDetailsList {
 
   ///Admin Pages
   // AppPageDetailEntity adminStartPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminStartPagePageName,
+  //   pageName: Texts(context).to.adminStartPagePageName,
   //   pageRoute: _getPageRoute(AdminStartPage),
   // );
   //
   // AppPageDetailEntity adminTestPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminTestPageName,
+  //   pageName: Texts(context).to.adminTestPageName,
   //   pageRoute: _getPageRoute(AdminTestPage),
   // );
   //
   // AppPageDetailEntity adminAppInfoPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminAppInfoPageName,
+  //   pageName: Texts(context).to.adminAppInfoPageName,
   //   pageRoute: _getPageRoute(AdminAppInfoPage),
   // );
   //
   // AppPageDetailEntity adminAppResourcesPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminAppResourcesPageName,
+  //   pageName: Texts(context).to.adminAppResourcesPageName,
   //   pageRoute: _getPageRoute(AdminAppResourcesPage),
   // );
   //
   // AppPageDetailEntity adminWidgetCheckPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminWidgetCheckPageName,
+  //   pageName: Texts(context).to.adminWidgetCheckPageName,
   //   pageRoute: _getPageRoute(AdminWidgetCheckPage),
   // );
   //
   // AppPageDetailEntity adminDataFormatCheckPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminDataFormatCheckPageName,
+  //   pageName: Texts(context).to.adminDataFormatCheckPageName,
   //   pageRoute: _getPageRoute(AdminDataFormatCheckPage),
   // );
   //
   // AppPageDetailEntity adminVerifiersPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminVerifiersPageName,
+  //   pageName: Texts(context).to.adminVerifiersPageName,
   //   pageRoute: _getPageRoute(AdminVerifiersPage),
   // );
   //
   // AppPageDetailEntity adminAppCountriesPage = AppPageDetailEntity(
-  //   pageName: Texts.to.adminAppCountriesPageName,
+  //   pageName: Texts(context).to.adminAppCountriesPageName,
   //   pageRoute: _getPageRoute(AdminAppCountriesPage),
   // );
   //
   // AppPageDetailEntity appDocs = AppPageDetailEntity(
-  //   pageName: Texts.to.appDocsPageName,
+  //   pageName: Texts(context).to.appDocsPageName,
   //   pageRoute: _getPageRoute(AppDocsPage),
   // );
 
   ///Main Pages
   // AppPageDetailEntity get splashScreen => AppPageDetailEntity(
-  //   pageName: Texts.to.splashScreenPageName,
+  //   pageName: Texts(context).to.splashScreenPageName,
   //   pageRoute: _getPageRoute(SplashScreenPage),
   // );
 
   AppPageDetailEntity get homepage => AppPageDetailEntity(
-    pageName: Texts.to.homePageName,
+    pageName: Texts(context).to.homePageName,
     pageRoute: HomeRoute.page.name,
     iconCode: AppIcons.home.icon!.codePoint,
     bottomBarItemNumber: 0,
@@ -91,7 +95,7 @@ class AppPageDetailsList {
   );
 
   // AppPageDetailEntity get settings => AppPageDetailEntity(
-  //   pageName: Texts.to.settingsPageName,
+  //   pageName: Texts(context).to.settingsPageName,
   //   pageRoute: _getPageRoute(SettingsPage),
   //   iconCode: AppIcons.settings.icon!.codePoint,
   //   bottomBarItemNumber: 1,
@@ -99,21 +103,21 @@ class AppPageDetailsList {
   // );
 
   // AppPageDetailEntity get about => AppPageDetailEntity(
-  //   pageName: Texts.to.aboutPageName,
+  //   pageName: Texts(context).to.aboutPageName,
   //   pageRoute: _getPageRoute(AboutPage),
   //   iconCode: AppIcons.about.icon!.codePoint,
   //   drawerPresence: true,
   // );
 
   // AppPageDetailEntity get update => AppPageDetailEntity(
-  //   pageName: Texts.to.updatePageName,
+  //   pageName: Texts(context).to.updatePageName,
   //   pageRoute: _getPageRoute(UpdatePage),
   //   iconCode: AppIcons.update.icon!.codePoint,
   //   drawerPresence: true,
   // );
 
   // AppPageDetailEntity get notFound => AppPageDetailEntity(
-  //   pageName: Texts.to.notFoundPageName,
+  //   pageName: Texts(context).to.notFoundPageName,
   //   pageRoute: _getPageRoute(NotFoundPage),
   // );
 }

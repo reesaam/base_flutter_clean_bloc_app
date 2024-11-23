@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../components/storage/app_storage_module.dart';
@@ -26,15 +27,15 @@ appInitializationFunction() {
 void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] $message');
 void appLogPrint(message) => debugPrint('[LOG] $message');
 
-void popPage() {
-  AppRouter.to.goBack();
+void popPage(BuildContext context) {
+  AppRouter.to.goBack(context);
 }
 
 nullFunction() => null;
 
 bool? clearAppData() {
   bool result = false;
-  AppStorage.to.clearStorage().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
+  AppStorage.to.clearStorage();
   return result;
 }
 
@@ -52,15 +53,13 @@ bool? saveAppData({
     settingsEntity: appSettingData ?? loadedData?.settingsEntity,
     statisticsDataEntity: appStatisticsData ?? loadedData?.statisticsDataEntity,
   );
-  AppStorage.to
-      .saveAppData(appData: appData.mapper)
-      .then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => result = r));
+  AppStorage.to.saveAppData(appData: appData.mapper);
   return result;
 }
 
 AppDataEntity? loadAppData() {
   AppDataEntity? appData;
-  AppStorage.to.loadAppData().then((value) => value.fold((l) => AppExceptionsDialog.local(exception: l), (r) => appData = r?.mapper));
+  AppStorage.to.loadAppData();
   return appData;
 }
 
@@ -90,16 +89,16 @@ Future<void> checkForceUpdate() async {
   }
 }
 
-noInternetConnectionSnackBar() => AppSnackBar.show(message: Texts.to.connectionInternetNotAvailableText);
+noInternetConnectionSnackBar(BuildContext context) => AppSnackBar.show(message: Texts(context).to.connectionInternetNotAvailableText);
 
-showLoadingDialog({bool? isDismissible}) =>
-    AppAlertWidgetDialogs().withoutButton(widget: AppProgressIndicator.linear(), dismissible: isDismissible);
+showLoadingDialog(BuildContext context, {bool? isDismissible}) =>
+    AppAlertWidgetDialogs().withoutButton(context, widget: AppProgressIndicator.linear(), dismissible: isDismissible);
 
-appExitDialog() =>
-    AppAlertDialogs.withOkCancel(title: Texts.to.appExit, text: Texts.to.areYouSure, onTapOk: appExit, dismissible: true);
+appExitDialog(BuildContext context) =>
+    AppAlertDialogs.withOkCancel(context, title: Texts(context).to.appExit, text: Texts(context).to.areYouSure, onTapOk: appExit, dismissible: true);
 
-appRestart({AppPageDetailEntity? bootPage}) async {
-  showLoadingDialog();
+appRestart(BuildContext context, {AppPageDetailEntity? bootPage}) async {
+  showLoadingDialog(context);
   appLogPrint('App Reset Triggered');
   // Get.reloadAll();
 }

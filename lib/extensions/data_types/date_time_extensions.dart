@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../core/app_localization.dart';
 
 extension ExtensionDateTimeStringProvidersNull on DateTime? {
-  String toDateTimeFormat(BuildContext context, {String? separator}) => this == null ? Texts.to.empty : this!.toDateTimeFormat();
-  String toDateFormat(BuildContext context, {String? separator}) => this == null ? Texts.to.empty : this!.toDateFormat();
-  String toTimeFormat(BuildContext context, {bool? withSeconds}) => this == null ? Texts.to.empty : this!.toTimeFormat();
+  String toDateTimeFormat(String? separator) => this == null ? '' : this!.toDateTimeFormat();
+  String toDateFormat(String? separator) => this == null ? '' : this!.toDateFormat();
+  String toTimeFormat(bool? withSeconds) => this == null ? '' : this!.toTimeFormat();
 }
 
 extension ExtensionDateTimeStringProviders on DateTime {

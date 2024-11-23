@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
+import '../../extensions/data_types/list_extensions.dart';
 import '../buttons/app_general_button.dart';
 import '../core_widgets.dart';
 import '../general_widgets/dividers.dart';
@@ -11,42 +11,54 @@ import '../resources/paddings.dart';
 import '../resources/spaces.dart';
 
 class AppBottomDialogs {
-  _onTapCancel() => popPage();
+  _onTapCancel(BuildContext context) => popPage(context);
 
-  withoutButton({String? title, required Widget form, bool? dismissible}) async {
+  withoutButton(BuildContext context, {String? title, required Widget form, bool? dismissible}) async {
     List<Widget> buttons = [];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomDialogGeneral(context, title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withOk({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
+  withOk(
+    BuildContext context, {
+    String? title,
+    required Widget form,
+    required Function() onTapOk,
+    bool? dismissible,
+  }) async {
     List<Widget> buttons = [
       AppGeneralButton(
-        text: Texts.to.ok,
+        text: Texts(context).to.ok,
         onTap: onTapOk,
         primaryColor: true,
       )
     ];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomDialogGeneral(context, title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withCancel({String? title, required Widget form, bool? dismissible}) async {
-    List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts.to.cancel, onTap: _onTapCancel)];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+  withCancel(BuildContext context, {String? title, required Widget form, bool? dismissible}) async {
+    List<Widget> buttons = [AppGeneralButton(onSecondaryColor: true, text: Texts(context).to.cancel, onTap: _onTapCancel)];
+    await _appBottomDialogGeneral(context, title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  withOkCancel({String? title, required Widget form, required Function() onTapOk, bool? dismissible}) async {
+  withOkCancel(
+    BuildContext context, {
+    String? title,
+    required Widget form,
+    required Function() onTapOk,
+    bool? dismissible,
+  }) async {
     List<Widget> buttons = [
-      AppGeneralButton(onSecondaryColor: true, text: Texts.to.cancel, onTap: () => _onTapCancel()),
+      AppGeneralButton(onSecondaryColor: true, text: Texts(context).to.cancel, onTap: () => _onTapCancel(context)),
       AppGeneralButton(
-        text: Texts.to.ok,
+        text: Texts(context).to.ok,
         onTap: () => onTapOk(),
         primaryColor: true,
       ),
     ];
-    await _appBottomDialogGeneral(title: title, form: form, buttons: buttons, dismissible: dismissible);
+    await _appBottomDialogGeneral(context, title: title, form: form, buttons: buttons, dismissible: dismissible);
   }
 
-  tappableItem({required String text, required Function() onTap}) => LayoutBuilder(
+  tappableItem(BuildContext context, {required String text, required Function() onTap}) => LayoutBuilder(
       builder: (context, constraints) => InkWell(
           onTap: onTap,
           child: SizedBox(
@@ -55,9 +67,15 @@ class AppBottomDialogs {
             child: Text(text),
           )));
 
-  _appBottomDialogGeneral({String? title, required Widget form, required List<Widget> buttons, bool? dismissible}) async =>
+  _appBottomDialogGeneral(
+    BuildContext context, {
+    String? title,
+    required Widget form,
+    required List<Widget> buttons,
+    bool? dismissible,
+  }) async =>
       await showModalBottomSheet(
-          context: Get.context!,
+          context: context,
           useSafeArea: true,
           useRootNavigator: true,
           showDragHandle: true,
@@ -67,13 +85,13 @@ class AppBottomDialogs {
           builder: (context) => SingleChildScrollView(
                   child: Column(mainAxisSize: MainAxisSize.max, children: [
                 Padding(
-                    padding: AppPaddings.generalBottomModal,
+                    padding: AppPaddings.generalBottomModal(context),
                     child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.center, children: [
                       Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         title == null
                             ? shrinkSizedBox
                             : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                Text(title ?? Texts.to.empty),
+                                Text(title),
                                 AppDividers.generalWithPrimaryColor,
                                 AppSpaces.h10,
                               ]),

@@ -89,7 +89,7 @@ class DioFunctions {
     final File data;
     try {
       _increaseStatisticApiCall();
-      final savePath = _getSavePath(context);
+      final savePath = _getSavePath();
       final Response result = await dio.download(url, savePath);
       if (result.statusCode == 200) {
         _printResponse('DOWNLOAD', result);
@@ -110,7 +110,7 @@ class DioFunctions {
   static _increaseStatisticApiCall() => AppStatistics().increaseApiCalls();
 
   ///TODO: Implementation
-  static Future<String> _getSavePath(BuildContext context) async => Texts.to.empty;
+  static Future<String> _getSavePath() async => '';
 
   static _printResponse(String method, Response response) {
     appDebugPrint('==> $method Method Successful Response:');

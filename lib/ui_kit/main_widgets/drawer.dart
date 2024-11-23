@@ -17,7 +17,8 @@ import '../resources/spaces.dart';
 import '../general_widgets/dividers.dart';
 
 class AppDrawer extends Drawer {
-  AppDrawer({super.key});
+  final BuildContext context;
+  const AppDrawer(this.context, {super.key});
 
   @override
   double? get width => Get.width / 1.6;
@@ -46,9 +47,9 @@ class AppDrawer extends Drawer {
   }
 
   Widget _bodyItem(AppPageDetailEntity page) => ListTile(
-        title: Text(page.pageName ?? Texts.to.empty),
+        title: Text(page.pageName ?? Texts(context).to.empty),
         leading: page.iconCode?.toIcon(),
-        onTap: () => {popPage(), AppRouter.to.gotoPage(page)},
+        onTap: () => {popPage(context), AppRouter.to.gotoPage(context, page: page)},
       );
 
   // Widget footer() => Container(
@@ -56,6 +57,6 @@ class AppDrawer extends Drawer {
   //     child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
   //       AppIcons.version,
   //       AppSpaces.w20,
-  //       InkWell(onTap: () => goToUpdatePage(), child: Text('${Texts.to.version}: ${AppInfo.currentVersion.version}')),
+  //       InkWell(onTap: () => goToUpdatePage(), child: Text('${Texts(context).to.version}: ${AppInfo.currentVersion.version}')),
   //     ]));
 }

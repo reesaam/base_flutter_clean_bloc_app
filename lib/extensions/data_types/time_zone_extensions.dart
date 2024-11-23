@@ -9,11 +9,11 @@ import 'duration_extensions.dart';
 
 extension ExtensionTimeZone on TimeZone {
   String countryName(BuildContext context) {
-    String result = Texts.to.notAvailableInitials;
+    String result = Texts(context).to.notAvailableInitials;
     for (var country in AppCountry.values) {
       for (var abbr in country.timeZoneAbbreviation!) {
         if (abbr == abbreviation) {
-          result = country.countryName ?? Texts.to.notAvailableInitials;
+          result = country.countryName ?? Texts(context).to.notAvailableInitials;
         }
       }
     }

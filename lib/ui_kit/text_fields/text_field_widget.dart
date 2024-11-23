@@ -185,7 +185,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
     String? text;
 
     //Regex Check
-    if (regexValidator != null) _regexValidator(context, value: controller.text) ? text = null : text = errorText ?? Texts.to.incorrect;
+    if (regexValidator != null) _regexValidator(context, value: controller.text) ? text = null : text = errorText ?? Texts(context).to.incorrect;
 
     //In case of conditions to check and show error are absent ErrorText will come from above
     if (regexValidator == null) text == errorText;
@@ -204,7 +204,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
 
   /// Regex Checker
   bool _regexValidator(BuildContext context, {String? value}) =>
-      value == Texts.to.empty ? true : RegexVal.hasMatch(value, regexValidator?.regexValue ?? '');
+      value == Texts(context).to.empty ? true : RegexVal.hasMatch(value, regexValidator?.regexValue ?? '');
 
   /// Counter Builder
   /// [Counter], [MaxLength] and [CurrentLength] has Specific and Complicated Conditions
@@ -213,7 +213,7 @@ abstract class AppTextFieldWidget extends StatelessWidget {
   Widget _buildCounter(BuildContext context, {int? currentLength}) {
     String text = '';
     if (hasCounter == true) {
-      text = '${currentLength.toString()}${maxLength == null ? Texts.to.empty : ' / ${maxLength.toString()}'}';
+      text = '${currentLength.toString()}${maxLength == null ? Texts(context).to.empty : ' / ${maxLength.toString()}'}';
     } else if (showMaxLength == true) {
       text = currentLength.toString();
     }

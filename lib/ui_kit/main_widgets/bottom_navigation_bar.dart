@@ -11,8 +11,9 @@ import '../../shared/shared_mems/core_mems/app_page_detail_mem/app_page_detail.d
 import '../theme/themes.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
+  final BuildContext context;
   final int? selectedIndex;
-  const AppBottomNavigationBar({super.key, this.selectedIndex});
+  const AppBottomNavigationBar(this.context, {super.key, this.selectedIndex});
 
   @override
   State<AppBottomNavigationBar> createState() => _AppBottomNavigationBarState();
@@ -30,7 +31,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   void _onItemTap(int index) {
     selectedIndex.value = index;
-    AppRouter.to.gotoPage(pagesList[index]);
+    AppRouter.to.gotoPage(context, page: pagesList[index]);
   }
 
   @override
@@ -55,5 +56,5 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   Icon _createIcon(AppPageDetailEntity route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).iconCode?.toIcon() ?? AppIcons.none;
 
-  String _createLabel(AppPageDetailEntity route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts.to.empty;
+  String _createLabel(AppPageDetailEntity route) => pagesList.singleWhere((element) => element.pageRoute == route.pageRoute).pageName ?? Texts(context).to.empty;
 }
