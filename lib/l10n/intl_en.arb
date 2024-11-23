@@ -4,7 +4,7 @@
     "app_name": "Base Flutter MVC GetX App",
 
     "splashScreenPageName": "Splash Screen",
-    "homePageName": "Home",
+    "homePageName": "HomePage",
     "settingsPageName": "Settings",
     "updatePageName": "Update",
     "aboutPageName": "About",

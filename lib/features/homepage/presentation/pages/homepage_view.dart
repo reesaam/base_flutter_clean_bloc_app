@@ -13,7 +13,7 @@ class HomePage extends CoreView<HomepageCubit> {
   Widget get body => BlocBuilder<HomepageCubit, HomepageState>(
     builder: (context, state) =>
     state.whenOrNull(
-      initial: () => Center(child: Text('controller.pageDetail.pageName' ?? '-')),
+      initial: () => Center(child: Text(controller.pageDetail.pageName ?? '-')),
     ) ??
         const SizedBox.shrink(),
   );
