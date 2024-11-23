@@ -1,4 +1,4 @@
-package com.resam.baseflutterall
+package site.resam.basefluttercleanbloc
 
 import io.flutter.embedding.android.FlutterActivity
 
