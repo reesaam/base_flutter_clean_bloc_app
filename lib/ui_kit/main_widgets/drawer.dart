@@ -19,8 +19,6 @@ import '../general_widgets/dividers.dart';
 class AppDrawer extends Drawer {
   AppDrawer({super.key});
 
-  final AppRouter _appRouter = getIt<AppRouter>();
-
   @override
   double? get width => Get.width / 1.6;
 
@@ -50,7 +48,7 @@ class AppDrawer extends Drawer {
   Widget _bodyItem(AppPageDetailEntity page) => ListTile(
         title: Text(page.pageName ?? Texts.to.empty),
         leading: page.iconCode?.toIcon(),
-        onTap: () => {popPage(), _appRouter.gotoPage(page)},
+        onTap: () => {popPage(), AppRouter.to.gotoPage(page)},
       );
 
   // Widget footer() => Container(

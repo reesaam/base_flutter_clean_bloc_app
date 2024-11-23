@@ -11,8 +11,8 @@ import 'themes_variables.dart';
 @DI.component
 class AppThemes {
   ///Main Theme Functions
-  static AppThemes get _to => getIt<AppThemes>();
   static ThemeData get to => _to.getTheme();
+  static AppThemes get _to => getIt<AppThemes>();
 
   static ThemeData get lightTheme => _to.getTheme(isSystemDark: false);
   static ThemeData get darkTheme => _to.getTheme(isSystemDark: true);

@@ -27,7 +27,7 @@ void appDebugPrint(message) => CoreFlags.isRelease ? null : debugPrint('[Debug] 
 void appLogPrint(message) => debugPrint('[LOG] $message');
 
 void popPage() {
-  AppRouter().goBack();
+  AppRouter.to.goBack();
 }
 
 nullFunction() => null;
