@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/annotations/dependency_injection_annotation.dart';
-import '../../core/app_localization.dart';
 import '../../core/core_functions.dart';
 import '../../core/core_info/core_defaults.dart';
 import '../../core/core_resources/core_enums.dart';
@@ -22,12 +21,12 @@ import 'storage_providers/app_shared_preferences.dart';
 
 @DI.component
 class AppStorage {
+  static AppStorage get to => getIt<AppStorage>();
+
   final _storage = switch (CoreDefaults.defaultStorageProvider) {
     AppStorageProvider.getStorage => AppLocalStorage(),
     AppStorageProvider.sharedPreferences => AppSharedPreferences(),
   };
-
-  static AppStorage get to => getIt<AppStorage>();
 
   ///Keys
   final _keyAppData = AppStorageKeys.keyAppData;

@@ -11,10 +11,10 @@ class HomePage extends CoreView<HomepageCubit> {
 
   @override
   Widget get body => BlocBuilder<HomepageCubit, HomepageState>(
-    builder: (context, state) =>
-    state.whenOrNull(
-      initial: () => Center(child: Text(controller.pageDetail.pageName ?? '-')),
-    ) ??
-        const SizedBox.shrink(),
-  );
+        builder: (context, state) =>
+            state.whenOrNull(
+              initial: () => Center(child: Text(controller.pageDetail.pageName ?? '-')),
+            ) ??
+            const SizedBox.shrink(),
+      );
 }

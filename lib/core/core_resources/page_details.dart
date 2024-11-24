@@ -11,7 +11,7 @@ import 'icons.dart';
 class AppPageDetailsList {
   BuildContext context;
   AppPageDetailsList(this.context);
-  static AppPageDetailsList get to => getIt<AppPageDetailsList>();
+  AppPageDetailsList get to => getIt<AppPageDetailsList>();
 
   List<AppPageDetailEntity> get listPages => [
         // splashScreen,
@@ -87,7 +87,7 @@ class AppPageDetailsList {
   // );
 
   AppPageDetailEntity get homepage => AppPageDetailEntity(
-    pageName: Texts(context).to.homePageName,
+    pageName: 'Texts(context).to.homePageName',
     pageRoute: HomeRoute.page.name,
     iconCode: AppIcons.home.icon!.codePoint,
     bottomBarItemNumber: 0,
